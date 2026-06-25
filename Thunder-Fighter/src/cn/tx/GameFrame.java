@@ -22,7 +22,7 @@ public class GameFrame extends JFrame {
         //the size of the window
         this.setSize(500, 760);
         //tile
-        this.setTitle("Leingtingzhanji");
+        this.setTitle("Thunder Fighter");
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
