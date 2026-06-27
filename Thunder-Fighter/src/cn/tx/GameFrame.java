@@ -59,7 +59,6 @@ public class GameFrame extends JFrame {
 
             }
         }).start();
-
     }
 
 
