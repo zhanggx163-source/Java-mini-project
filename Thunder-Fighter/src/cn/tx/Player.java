@@ -1,76 +1,44 @@
 package cn.tx;
 
+import cn.tx.GameFrame;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Player extends KeyAdapter {
-
-    HeroPlane heroPlane;
     GameFrame frame;
 
-    public Player(GameFrame frame){
+    public Player() {
+    }
+
+    public Player(GameFrame frame) {
         this.frame = frame;
     }
 
-    public Player(HeroPlane heroPlane){
-        this.heroPlane = heroPlane;
-    }
-    /**
-     * Invoked when a key has been pressed.
-     *
-     * @param e
-     */
-    @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        //38， 40， 37， 39
-        switch(keyCode){
-            case 38:
-                frame.heroPlane.up = true;
-                break;
-            case 40:
-                frame.heroPlane.down = true;
-                break;
-            case 37:
-                frame.heroPlane.left = true;
-                break;
-            case 39:
-                frame.heroPlane.right = true;
-                break;
-            case 66:
-                addBullet();
-                break;
+        switch (keyCode) {
+            case 37 -> this.frame.heroPlane.left = true;
+            case 38 -> this.frame.heroPlane.up = true;
+            case 39 -> this.frame.heroPlane.right = true;
+            case 40 -> this.frame.heroPlane.down = true;
+            case 66 -> this.addBullet();
         }
-        //System.out.println(e.getKeyCode());
+
     }
 
-    /**
-     * Invoked when a key has been released.
-     *
-     * @param e
-     */
-    @Override
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        switch(keyCode){
-            case 38:
-                frame.heroPlane.up = false;
-                break;
-            case 40:
-                frame.heroPlane.down = false;
-                break;
-            case 37:
-                frame.heroPlane.left = false;
-                break;
-            case 39:
-                frame.heroPlane.right = false;
-                break;
+        switch (keyCode) {
+            case 37 -> this.frame.heroPlane.left = false;
+            case 38 -> this.frame.heroPlane.up = false;
+            case 39 -> this.frame.heroPlane.right = false;
+            case 40 -> this.frame.heroPlane.down = false;
         }
+
     }
 
-    public void addBullet(){
-        frame.bullets.add(new Bullet(frame.heroPlane.x + 5, frame.heroPlane.y - 20));
+    public void addBullet() {
+        this.frame.bullets.add(new Bullet(this.frame.heroPlane.x + 15, this.frame.heroPlane.y - 20));
     }
-
-
 }

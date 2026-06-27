@@ -3,36 +3,40 @@ package cn.tx;
 import javax.swing.*;
 import java.awt.*;
 
-public class HeroPlane extends Thread{
-    //the position de plane on the board
-    int x = 230, y = 600;
+public class HeroPlane extends Thread {
+    int x, y;
     int width = 50, height = 50;
-    int speed = 10;
-
-    Image img = new ImageIcon("img/10011.png").getImage();
-    //define direction
+    Image image = new ImageIcon("img/10031.png").getImage();
+    int speed = 5;
     boolean up, down, left, right;
+    GameFrame frame;
 
-    public HeroPlane() {
-    }
+    public HeroPlane() {}
 
-    public HeroPlane(int x, int y, int width, int height) {
-        this.x = x;
+    public HeroPlane(int x, int y, GameFrame frame) {
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.x = x;
+        this.frame = frame;
     }
+
 
     @Override
-    public void run(){
+    public void run() {
         while(true){
             if(up) y -= speed;
             if(down) y += speed;
             if(left) x -= speed;
             if(right) x += speed;
 
+            if(x < 0) x = 0;
+            if(x > frame.getWidth() - width) x = frame.getWidth() - width;
+
+            if(y < 30) y = 30;
+            if(y > frame.getHeight() - height) y = frame.getHeight() - height;
+
+
             try {
-                Thread.sleep(10);
+                sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

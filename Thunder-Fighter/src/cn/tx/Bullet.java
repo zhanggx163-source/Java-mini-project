@@ -5,9 +5,11 @@ import java.awt.*;
 
 public class Bullet {
     int x, y;
-    int width = 50, height = 50;
-    int speed = 15;
-    Image image = new ImageIcon("img/30024.png").getImage();
+    int width = 15, height = 10;
+    int speed = 5;
+    Image image = new ImageIcon("img/30021.png").getImage();
+
+    public Bullet(){}
 
     public Bullet(int x, int y) {
         this.x = x;
